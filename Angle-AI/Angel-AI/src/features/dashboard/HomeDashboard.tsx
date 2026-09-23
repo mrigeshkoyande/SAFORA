@@ -47,7 +47,7 @@ export default function HomeDashboard() {
 
   return (
     <AppShell>
-      <div className="px-5 space-y-5 pt-2 pb-4">
+      <div className="px-4 sm:px-6 lg:px-8 space-y-6 pt-2 pb-8 max-w-7xl mx-auto">
         {/* Greeting */}
         <section className="animate-fade-in">
           <h2 className="font-jakarta font-bold text-headline-lg-mobile text-on-surface">

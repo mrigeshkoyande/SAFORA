@@ -1,16 +1,25 @@
 <div align="center">
-  <img src="Media/APP LOGO.png" alt="SAFORA Logo" width="150" height="150" />
+  <img src="Media/APP LOGO.png" alt="SAFORA Logo" width="160" height="160" />
   <h1>SAFORA — Personal Safety & Emergency Intelligence</h1>
   <p><strong>An enterprise-grade, proactive personal safety web and mobile platform powered by AI de-escalation coaching, covert emergency triggers, and tamper-proof evidence archiving.</strong></p>
 
   <p>
+    <a href="https://github.com/mrigeshkoyande/SAFORA"><img src="https://img.shields.io/badge/Repository-mrigeshkoyande%2FSAFORA-pink?style=for-the-badge&logo=github" alt="GitHub Repository" /></a>
     <img src="https://img.shields.io/badge/React-19.2-61DAFB?style=for-the-badge&logo=react&logoColor=black" alt="React 19" />
     <img src="https://img.shields.io/badge/Node.js-v18+-339933?style=for-the-badge&logo=node.js&logoColor=white" alt="Node.js" />
     <img src="https://img.shields.io/badge/Express.js-4.21-000000?style=for-the-badge&logo=express&logoColor=white" alt="Express.js" />
-    <img src="https://img.shields.io/badge/Prisma-ORM-2D3748?style=for-the-badge&logo=prisma&logoColor=white" alt="Prisma" />
-    <img src="https://img.shields.io/badge/Supabase-PostgreSQL-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white" alt="Supabase" />
-    <img src="https://img.shields.io/badge/Firebase-Auth-FFCA28?style=for-the-badge&logo=firebase&logoColor=black" alt="Firebase" />
+    <img src="https://img.shields.io/badge/Gemini_AI-2.5_Flash-8E75B5?style=for-the-badge&logo=google&logoColor=white" alt="Gemini AI" />
     <img src="https://img.shields.io/badge/Platform-Web%20%7C%20Android%20%7C%20iOS-4CAF50?style=for-the-badge" alt="Platforms" />
+  </p>
+
+  <p>
+    <a href="#-quick-start">Quick Start</a> •
+    <a href="#-key-features">Key Features</a> •
+    <a href="#-architecture">Architecture</a> •
+    <a href="#-environment-variables">Environment Variables</a> •
+    <a href="#-deployment">Deployment</a> •
+    <a href="BRAIN.md">BRAIN.md</a> •
+    <a href="DESIGN.md">DESIGN.md</a>
   </p>
 </div>
 
@@ -18,56 +27,93 @@
 
 ## 🌟 Executive Summary
 
-**SAFORA** is a state-of-the-art personal safety companion designed to provide seamless protection, proactive journey monitoring, and instant crisis de-escalation.
+**SAFORA** is an intelligent personal safety companion built to provide continuous proactive journey monitoring, instant emergency SOS dispatch, and real-time AI-guided crisis de-escalation.
 
-### Why It Exists
-Personal safety remains a paramount concern globally. Existing solutions often require overt actions (like dialing a number) which can escalate dangerous situations. SAFORA solves this by introducing covert triggers, proactive monitoring, and AI-assisted de-escalation.
-
-### Vision & Mission
-Our **vision** is a world where everyone can walk freely without fear. 
-Our **mission** is to leverage cutting-edge AI, cloud infrastructure, and mobile hardware to build an invisible but impenetrable shield for personal safety.
+### Why SAFORA?
+Traditional safety tools rely on manual, overt actions (such as placing a phone call) which can escalate tense situations. SAFORA solves this with **covert triggers**, **silent background audio/location streaming**, and **AI-powered escape tactics**.
 
 ---
 
-## ✨ Features
+## ✨ Key Features
 
 ### 🧠 AI Features
-- **AI Escape Coach:** Real-time conversational agent trained in crisis de-escalation and emergency psychology.
-- **AI Guardian:** Intelligent background monitoring of your journey.
-- **Smart Recommendations:** Contextual prompts based on your current situation.
-- **AI Safety Assistant:** Automated analysis of threats and navigation to safe havens.
+* **AI Escape Coach:** Powered by Google Gemini 2.5 Flash for real-time, concise (<= 3 sentences) crisis advice.
+* **Proactive Guardian Monitoring:** Background anomaly detection and automated route tracking.
+* **Contextual Recommendations:** Smart prompts based on current location and environmental data.
 
-### 🛡️ Safety Features
-- **SOS:** Instant alerting to emergency contacts.
-- **Hidden SOS:** Covert triggers to dispatch help silently.
-- **Guardian Mode:** Countdown-based journey tracking.
-- **Emergency Contacts:** Priority-based alert routing.
-- **Live Location:** Continuous background GPS monitoring.
-- **Journey Tracking:** ETA calculation and checkpoint logging.
+### 🛡️ Safety & Crisis Management
+* **Instant Emergency SOS:** 3-second hold trigger with haptic feedback and automated contact dispatch.
+* **Covert / Hidden SOS:** Decoy PIN unlock that simulates normal state while quietly streaming location & audio.
+* **Guardian Mode:** ETA tracking and checkpoint check-ins.
+* **Dummy Call:** Realistic simulated incoming call generator to escape uncomfortable situations.
 
-### 📁 Evidence Features
-- **Smart Evidence Vault:** AES-256 cloud-encrypted storage for media.
-- **Cloud Storage:** Instant mirroring of captured evidence to prevent local deletion.
-- **Timestamping:** Cryptographic stamping of time and location on all media.
+### 📁 Evidence Vault
+* **Tamper-Proof Archiving:** AES-256 encrypted media uploads directly to Cloudinary storage.
+* **Metadata Stamping:** Cryptographic time and GPS location stamps on captured evidence.
+
+---
+
+## 🏗 Architecture & Design Docs
+
+* 🧠 **[BRAIN.md](BRAIN.md):** Deep system architecture, decision engine specifications, offline fallback strategy, and covert trigger protocols.
+* 🎨 **[DESIGN.md](DESIGN.md):** SAFORA design system, color tokens, typography, glassmorphism specs, and mobile-first responsive breakpoints.
 
 ---
 
 ## 🚀 Quick Start
 
+### 1. Clone & Install
 ```bash
 # Clone the repository
-git clone https://github.com/mrigeshkoyande123/Navix-AI.git
-cd Navix-AI
+git clone https://github.com/mrigeshkoyande/SAFORA.git
+cd SAFORA
 
-# Install all dependencies (root, backend, frontend)
+# Install all workspace dependencies (root, backend, frontend)
 npm run install:all
+```
 
-# Run development server
+### 2. Run Development Server
+```bash
 npm run dev
 ```
+- **Frontend App:** [http://localhost:5173/](http://localhost:5173/)
+- **Backend Express API:** [http://localhost:5000/](http://localhost:5000/)
+
+---
+
+## 🔑 Environment Variables
+
+Copy `.env.example` in `Angle-AI/Angel-AI/.env.example` to `.env.local`:
+
+```env
+VITE_FIREBASE_API_KEY=your_firebase_api_key
+VITE_FIREBASE_AUTH_DOMAIN=your_firebase_auth_domain
+VITE_FIREBASE_PROJECT_ID=your_firebase_project_id
+VITE_FIREBASE_STORAGE_BUCKET=your_firebase_storage_bucket
+VITE_FIREBASE_MESSAGING_SENDER_ID=your_firebase_messaging_sender_id
+VITE_FIREBASE_APP_ID=your_firebase_app_id
+VITE_FIREBASE_MEASUREMENT_ID=your_firebase_measurement_id
+
+VITE_API_URL=http://localhost:5000/api
+```
+
+*(Note: SAFORA includes a safe fallback engine so the app runs fully even if Firebase environment variables are unconfigured.)*
+
+---
+
+## 🌐 Deployment
+
+### Vercel / Netlify (Frontend)
+- **Root Directory:** `Angle-AI/Angel-AI`
+- **Build Command:** `npm run build`
+- **Output Directory:** `dist`
+
+### Render / Railway (Backend)
+- **Root Directory:** `backend`
+- **Start Command:** `node server.js`
 
 ---
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the MIT License.
