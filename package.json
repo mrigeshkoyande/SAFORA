@@ -1,0 +1,21 @@
+{
+  "name": "angel-ai-root",
+  "version": "1.0.0",
+  "description": "Angel AI Root Project Workspace",
+  "private": true,
+  "scripts": {
+    "postinstall": "cd Angle-AI/Angel-AI && npm install",
+    "install:all": "npm install && cd backend && npm install && cd ../Angle-AI/Angel-AI && npm install",
+    "build": "cd Angle-AI/Angel-AI && npm run build",
+    "vercel-build": "cd Angle-AI/Angel-AI && npm install && npm run build",
+    "dev": "concurrently -n \"BACKEND,FRONTEND\" -c \"bgBlue.bold,bgGreen.bold\" \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "start": "concurrently \"npm run start:backend\" \"npm run start:frontend\"",
+    "dev:backend": "cd backend && npm run dev",
+    "dev:frontend": "cd Angle-AI/Angel-AI && npm run dev",
+    "start:backend": "cd backend && npm start",
+    "start:frontend": "cd Angle-AI/Angel-AI && npm run preview"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

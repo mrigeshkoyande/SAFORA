@@ -1,0 +1,163 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model User {
+  id                  String               @id @default(uuid())
+  firebaseUID         String               @unique
+  fullName            String?
+  email               String               @unique
+  phone               String?
+  profileImage        String?
+  gender              String?
+  dateOfBirth         DateTime?
+  bloodGroup          String?
+  address             String?
+  language            String               @default("en")
+  theme               String               @default("system")
+  deviceToken         String?
+  guardianMode        Boolean              @default(false)
+  emergencyMode       Boolean              @default(false)
+  safeWord            String?
+  createdAt           DateTime             @default(now())
+  updatedAt           DateTime             @updatedAt
+
+  emergencyContacts   EmergencyContact[]
+  evidenceVaults      EvidenceVault[]
+  sosHistory          SOSHistory[]
+  guardianSessions    GuardianSession[]
+  escapeCoachHistory  EscapeCoachHistory[]
+  deviceTokens        DeviceToken[]
+  guardians           Guardian[]
+  dummyCall           DummyCall?
+  journeys            Journey[]
+  notifications       Notification[]
+}
+
+model EmergencyContact {
+  id           String   @id @default(uuid())
+  userId       String
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  name         String
+  phone        String
+  relationship String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model EvidenceVault {
+  id            String   @id @default(uuid())
+  userId        String
+  user          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  cloudinaryUrl String
+  fileType      String
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model SOSHistory {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  latitude  Float
+  longitude Float
+  status    String   @default("active")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model GuardianSession {
+  id        String    @id @default(uuid())
+  userId    String
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  startedAt DateTime  @default(now())
+  endedAt   DateTime?
+  isActive  Boolean   @default(true)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model EscapeCoachHistory {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  prompt    String
+  response  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model DeviceToken {
+  id         String   @id @default(uuid())
+  userId     String
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  fcmToken   String   @unique
+  deviceType String?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model Guardian {
+  id           String   @id @default(uuid())
+  userId       String
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  guardianName String
+  phone        String
+  email        String?
+  relationship String?
+  profilePhoto String?
+  priority     Int      @default(1)
+  verified     Boolean  @default(false)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model DummyCall {
+  id            String   @id @default(uuid())
+  userId        String   @unique
+  user          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  callerName    String   @default("Mom")
+  callerNumber  String   @default("+1234567890")
+  callerPhoto   String?
+  scheduledTime DateTime?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model Journey {
+  id               String   @id @default(uuid())
+  userId           String
+  user             User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  startLatitude    Float
+  startLongitude   Float
+  startAddress     String?
+  destLatitude     Float
+  destLongitude    Float
+  destAddress      String?
+  expectedArrival  DateTime
+  currentLatitude  Float?
+  currentLongitude Float?
+  guardianWatching String[] // Array of Guardian IDs
+  checkInTime      DateTime?
+  status           String   @default("STARTED")
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+}
+
+model Notification {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  title     String
+  message   String
+  type      String   @default("System")
+  read      Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
